@@ -33,18 +33,20 @@ The Game Boy’s control pins are connected as follows:
 
 | GB Pin | GB Use | Lynx Pin | Lynx Use |
 | --- | --- | --- | --- |
-| 5   | /CS | *   | U2 |
-| 4   | /RD | 10  | /OE |
-| 3   | /WR | 27  | /WE |
-| 2   | CLK | *   | U2, Q1 via R4 |
+| 5   | /CS | *   | SYSCTL1 |
+| 4   | /RD | 10  | /CS0? /OE? |
+| 3   | /WR | 27  | /CS1? /WE? |
+| 2   | CLK | *   | IODAT, Q1 via R4 |
 | 30  | /RST | *  | MCU via R3 |
-| 31  | AUD | 32  | AUD |
+| 31  | AUD | 32  | AUDIN |
 
-The clock pin is used to [latch](#latched) address pins in order to access higher memory addresses.
+A Lynx will strobe pin 10 (/CS0) and increment A0:10 on each read or write to $FCB2 (RCART0). It will strobe pin 27 (/CS1) and increment A0:10 on each read or write to $FCB3 (RCART1).
+
+The AUDIN pin (auxiliary data in) is a general-purpose IO pin, unrelated to audio. Some carts use it for bank-switching.
 
 ## Address
 
-The Game Boy’s address pins A0 through A10 are connected to the corresponding Lynx pins in order. The Lynx’s A12 through A19 are connected through a [shift register](#shifted). The Game Boy’s A11 through A15 are unused and the Lynx’s A11 is absent.
+The Game Boy’s address pins A0:A10 are connected to the corresponding Lynx pins in order. The Lynx’s A12:19 are connected to a [shift register](#shifted). The Game Boy’s A11:15 are unused and the Lynx’s A11 is absent.
 
 | GB Pin | GB Use | Lynx Pin | Lynx Use |
 | --- | --- | --- | --- |
@@ -90,24 +92,24 @@ The Game Boy’s 8 data pins are connected to the corresponding Lynx pins in ord
 
 ## Shifted
 
-Because the Game Boy has fewer address pins (16) than the Lynx (19), the adapter includes a HC164 shift register. The shifts CLK into the register on /CS and provides them as A12:19.
+The original Lynx uses a HC164 shift register to specify address pins A12:19, and the adapter likewise includes a HC164 on the adapter as U2 (instead of replicating the logic in FPGA):
 
-| SR Pin | SR Use | Lynx Pin | Lynx Use |
-| --- | --- | --- | --- |
-| 1   | A   | 1   | Gnd |
-| 2   | B   | *   | CLK |
-| 3   | QA  | 26  | A12 |
-| 4   | QB  | 25  | A13 |
-| 5   | QC  | 24  | A14 |
-| 6   | QD  | 23  | A15 |
-| 7   | Gnd | 1   | Gnd |
-| 8   | CLK | *   | /CS |
-| 9   | /CLR | 33 | +5V |
-| 10  | QE  | 19  | A16 |
-| 11  | QF  | 20  | A17 |
-| 12  | QG  | 21  | A18 |
-| 13  | QH  | 22  | A19 |
-| 14  | VCC | 33  | +5V |
+| SR Pin | SR Use | Lynx Pin | Lynx Use | GB Pin | GB Use |
+| --- | --- | --- | ------- | --- | --- |
+| 1   | A   | 1   | Gnd     | 32  | Gnd |
+| 2   | B   | *   | IODAT   | 2   | CLK |
+| 3   | QA  | 26  | A12     |     |     |
+| 4   | QB  | 25  | A13     |     |     |
+| 5   | QC  | 24  | A14     |     |     |
+| 6   | QD  | 23  | A15     |     |     |
+| 7   | Gnd | 1   | Gnd     | 32  | Gnd |
+| 8   | CLK | *   | SYSCTL1 | 5   | /CS |
+| 9   | /CLR | 33 | +5V     | 1   | +5V |
+| 10  | QE  | 19  | A16     |     |     |
+| 11  | QF  | 20  | A17     |     |     |
+| 12  | QG  | 21  | A18     |     |     |
+| 13  | QH  | 22  | A19     |     |     |
+| 14  | VCC | 33  | +5V     | 1   | +5V |
 
 ## Unregulated
 
