@@ -69,7 +69,7 @@ The Game Boy’s 8 data pins are connected to the corresponding NGP pins in orde
 
 ## Latched
 
-Because the Game Boy has fewer address pins (16) than the Neo Geo Pocket (21), the adapter includes an LC374A octal flip-flop. The flip-flop latches address pins A1:5 on a positive CLK edge and provdes them as A16:20. Three outputs are unused and their inputs pulled high:
+Because the Game Boy has fewer address pins (16) than the Neo Geo Pocket (21), the adapter includes an LC374A octal flip-flop. The flip-flop latches address pins A1:5 on a positive CLK edge and provides them as A16:20. Three outputs are unused and their inputs pulled high:
 
 | FF Pin | FF Use | NGP Pin | NGP Use |
 | --- | --- | --- | --- |
