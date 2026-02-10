@@ -1,5 +1,13 @@
 # AP-A01 Game Gear Adapter
 
+| Ref | Part                               |
+| --- | ---------------------------------- |
+| U1  | HC139 [dual 2:4 demux](#generated) |
+| U2  | Unknown [MCU](mcu.md)              |
+| R1  | Resistor (1.2kΩ)                   |
+| R2  | Resistor (10kΩ)                    |
+| C1  | Capacitor (0.1nF)                  |
+
 ## Power
 
 The following pins are connected to ground:

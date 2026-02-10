@@ -6,14 +6,14 @@ As the adapter lacks part references, this document uses the following:
 
 | Ref | Location    | Part                              |
 | --- | ----------- | --------------------------------- |
-| U1  | Mid right   | Unknown [MCU](mcu.md)             |
-| U2  | Mid left    | HC164 [shift register](#shifted)  |
+| U1  | Mid left    | HC164 [shift register](#shifted)  |
+| U2  | Mid right   | Unknown [MCU](mcu.md)             |
 | Q1  | Bottom left | Transistor                        |
 | R1  | Below C1    | Resistor (220Ω)                   |
-| R2  | Above U1    | Resistor (10kΩ)                   |
+| R2  | Above U2    | Resistor (10kΩ)                   |
 | R3  | Above R2    | Resistor (10kΩ)                   |
-| R4  | Above U2    | Resistor                          |
-| C1  | Below U1    | Capacitor                         |
+| R4  | Above U1    | Resistor                          |
+| C1  | Below U2    | Capacitor                         |
 | C2  | Above Q1    | Capacitor                         |
 | C3  | Left of C2  | Capacitor                         |
 | D1  | Underside   | LED                               |
@@ -92,7 +92,7 @@ The Game Boy’s 8 data pins are connected to the corresponding Lynx pins in ord
 
 ## Shifted
 
-The original Lynx uses a HC164 shift register to specify address pins A12:19, and the adapter likewise includes a HC164 on the adapter as U2 (instead of replicating the logic in FPGA):
+The original Lynx uses a HC164 shift register to specify address pins A12:19, and the adapter likewise includes a HC164 on the adapter as U1 (instead of replicating the logic in FPGA):
 
 | SR Pin | SR Use | Lynx Pin | Lynx Use | GB Pin | GB Use |
 | --- | --- | --- | ------- | --- | --- |
