@@ -1,12 +1,13 @@
 # AP-A01 Game Gear Adapter
 
-| Ref | Part                               |
-| --- | ---------------------------------- |
-| U1  | HC139 [dual 2:4 demux](#generated) |
-| U2  | Unknown [MCU](mcu.md)              |
-| R1  | Resistor (1.2kΩ)                   |
-| R2  | Resistor (10kΩ)                    |
-| C1  | Capacitor (0.1nF)                  |
+| Ref | Part                               | Note |
+| --- | ---------------------------------- | - |
+| U1  | HC139 [dual 2:4 demux](#generated) | |
+| U2  | Unknown [MCU](mcu.md)              | |
+| R1  | Resistor (1.2kΩ)                   | Between U2 pin 4 and D1 |
+| R2  | Resistor (10kΩ)                    | Between U2 pins 5 (+5V) and 6 |
+| C1  | Capacitor (0.1nF)                  | Between U2 pins 5 (+5V) and 2 (Gnd) |
+| D1  | IR LED                             | |
 
 ## Power
 
