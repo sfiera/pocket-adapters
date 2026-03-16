@@ -20,12 +20,12 @@ As the adapter lacks part references, this document uses the following:
 
 ## Power
 
-The following pins are connected to +3.3V or ground:
+The following pins are connected to +5V or ground:
 
 | Lynx Pin | Lynx Use |
 | --- | --- |
 | 1   | Gnd |
-| 33  | +3.3V |
+| 33  | +5V |
 
 ## Control
 
