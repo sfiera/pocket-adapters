@@ -15,12 +15,14 @@ The Game Boy’s control pins are connected as follows:
 
 | GB Pin | GB Use | NGP Pin | NGP Use |
 | --- | --- | --- | --- |
-| 5   | /CS | 33  | /CE |
+| 5   | /CS | 33  | /CE1 |
 | 4   | /RD | 32  | /OE |
 | 3   | /WR | 18  | /WE |
 | 2   | CLK |     | Latch |
-| 30  | /RST | 34 | ?   |
-| 31  | AUD |     | nc  |
+| 30  | /RST | 34 | /CE2 |
+| 31  | AUD |     | nc |
+
+4/8/16 Mbit cartridges contain a single flash chip, enabled by /CE1. 32 Mbit cartridges contain 2 flash chips; /CE1 enables the lower and /CE2 enables the upper.
 
 The clock pin is used to [latch](#latched) address pins in order to access higher memory addresses.
 
