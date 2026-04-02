@@ -10,3 +10,7 @@
 ## Detection
 
 * [MCU](mcu.md) Unidentified Microcontroller
+
+## See Also
+
+* [sfiera/cartload](https://github.com/sfiera/cartload) Code to use the adapters for backup
